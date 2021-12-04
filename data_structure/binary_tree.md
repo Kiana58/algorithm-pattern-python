@@ -55,6 +55,8 @@ class Solution:
         if root is None:
             return preorder
         
+        # K: s: append node in order, first right then left, so pop stack first left then right
+        # preorder: result list
         s = [root]
         while len(s) > 0:
             node = s.pop()
@@ -72,6 +74,8 @@ class Solution:
 ```Python
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
+        # K: s: append node in order, first add left until node is none, append node val, then right
+        # inorder: result list
         s, inorder = [], []
         node = root
         while len(s) > 0 or node is not None:
@@ -90,7 +94,8 @@ class Solution:
 ```Python
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
-
+        # K: s: append node in order, first add left until node is none, append right val if right is not none, else append last visited root
+        # postorder: result list
         s, postorder = [], []
         node, last_visit = root, None
         
@@ -142,7 +147,9 @@ class Solution:
         levels = []
         if root is None:
             return levels
-        
+        # K: bfs use deque, dfs use stack
+        # bfs: save node
+        # levels: final result
         bfs = collections.deque([root])
         
         while len(bfs) > 0:
